@@ -1,6 +1,4 @@
-# Sass easy BEM
-
-[![CircleCI](https://circleci.com/gh/Shudrum/sass-easy-bem/tree/master.svg?style=shield)](https://circleci.com/gh/Shudrum/sass-easy-bem/tree/master)
+# Sass easy BEM &bull; [![CircleCI](https://circleci.com/gh/Shudrum/sass-easy-bem/tree/master.svg?style=shield)](https://circleci.com/gh/Shudrum/sass-easy-bem/tree/master) ![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)
 
 Not just another mixins project with only, `@include element('name')` and the same for _blocks_ and _modifiers_.
 
