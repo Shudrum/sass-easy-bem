@@ -1,5 +1,7 @@
 # Sass easy BEM
 
+[![CircleCI](https://circleci.com/gh/Shudrum/sass-easy-bem/tree/master.svg?style=shield)](https://circleci.com/gh/Shudrum/sass-easy-bem/tree/master)
+
 Not just another mixins project with only, `@include element('name')` and the same for _blocks_ and _modifiers_.
 
 Did you know [http://getbem.com/](http://getbem.com/)? Well, this toolbox will help you strictly follow the rules the easiest way you'll see.
