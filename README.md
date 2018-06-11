@@ -75,7 +75,7 @@ Nothing more simple. Just do:
 Gives:
 
 ```css
-.my-container.my-container--allow-color-mixes .my-button.my-button--blue.my-button--green {
+.my-container.my-container--allow-color-mixes .my-container__my-button.my-container__my-button--blue.my-container__my-button--green {
   color: cyan;
 }
 ```
