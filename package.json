@@ -1,0 +1,26 @@
+{
+  "author": {
+    "name": "Julien Martin",
+    "url": "https://github.com/Shudrum"
+  },
+  "name": "sass-easy-bem",
+  "description": "BEM made easy for Sass",
+  "version": "1.0.0",
+  "license": "MIT",
+  "keywords": [
+    "css",
+    "mixins",
+    "sass",
+    "scss",
+    "bem"
+  ],
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^5.2.0",
+    "node-sass": "^4.9.0"
+  },
+  "style": "easy-bem.scss",
+  "scripts": {
+    "test": "mocha test/*.test.js"
+  }
+}
