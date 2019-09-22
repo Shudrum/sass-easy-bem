@@ -2,7 +2,7 @@ const assert = require('chai').assert;
 const sass = require('node-sass');
 
 const equal = (scss, css) => {
-  scss = `@import 'easy-bem'; ${scss}`;
+  scss = `@import 'sass-easy-bem'; ${scss}`;
   const compiledCss = (sass.renderSync({ data: scss })).css.toString();
   const minifiedCompiledCss = compiledCss.replace(/(\s){2,}/g, ' ').trim();
   const minifiedCss = css.replace(/(\s){2,}/g, ' ').trim();
