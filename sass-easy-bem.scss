@@ -7,6 +7,9 @@
 
 // Utility functions
 
+$element-separator: '__' !default;
+$modifier-separator: '--' !default;
+
 @function get-parent-selector($selector) {
   $parent: null;
   @while str-index('#{$selector}', ' ') {
@@ -30,27 +33,24 @@
 }
 
 @function get-block($selector) {
-  $have-element: str-index('#{&}', '__');
-  $have-modifier: str-index('#{&}', '--');
+  $have-element: str-index('#{&}', $element-separator);
+  $have-modifier: str-index('#{&}', $modifier-separator);
 
   @if ($have-element) {
-    @return str-slice('#{$selector}', 0, str-index('#{&}', '__') - 1);
+    @return str-slice('#{$selector}', 0, str-index('#{&}', $element-separator) - 1);
   }
   @if ($have-modifier) {
-    @return str-slice('#{$selector}', 0, str-index('#{&}', '--') - 1);
+    @return str-slice('#{$selector}', 0, str-index('#{&}', $modifier-separator) - 1);
   }
   @return $selector;
 }
 
 @function get-element($selector) {
-  $have-modifier: str-index('#{$selector}', '--');
-  @if ($have-modifier) {
-    $selector: str-slice('#{$selector}', 0, str-index('#{$selector}', '--') - 1);
-    @while (str-index(str-slice('#{$selector}', 2), '.')) {
-      $selector: str-slice('#{$selector}', str-index(str-slice('#{$selector}', 2), '.') + 1);
-    }
+  $selector: str-slice('#{$selector}', 2);
+  @while (str-index($selector, '.')) {
+    $selector: str-slice('#{$selector}', 0, str-index($selector, '.') - 1);
   }
-  @return $selector;
+  @return '.#{$selector}';
 };
 
 // BEM
@@ -64,36 +64,36 @@
 }
 
 @mixin element($element) {
-  $is-modifier: str-index('#{&}', '--');
+  $is-modifier: str-index('#{&}', $modifier-separator);
   $block: get-block(&);
 
   @if not $is-modifier {
     @at-root {
-      #{$block}__#{$element} {
+      #{$block}#{$element-separator}#{$element} {
         @content;
       }
     }
   }
 
   @if $is-modifier {
-    $is-element: str-index('#{&}', '__');
+    $is-element: str-index('#{&}', $element-separator);
 
     @if $is-element {
-      $block: str-slice('#{&}', 0, str-index('#{&}', '__') - 1);
+      $block: str-slice('#{&}', 0, str-index('#{&}', $element-separator) - 1);
 
       @at-root {
-        & #{$block}__#{$element} {
+        & #{$block}#{$element-separator}#{$element} {
           @content;
         }
       }
     }
 
     @if not $is-element {
-      $block: str-slice('#{&}', 0, str-index('#{&}', '--') - 1);
+      $block: str-slice('#{&}', 0, str-index('#{&}', $modifier-separator) - 1);
       $block: str-slice($block, 1, str-index(str-slice($block, 2, -1), '.'));
 
       @at-root {
-        & #{$block}__#{$element} {
+        & #{$block}#{$element-separator}#{$element} {
           @content;
         }
       }
@@ -108,12 +108,12 @@
 
   @at-root {
     @if ($parent-selector) {
-      #{$parent-selector} #{$last-selector}#{$element}--#{$modifier} {
+      #{$parent-selector} #{$last-selector}#{$element}#{$modifier-separator}#{$modifier} {
         @content;
       }
     }
     @else {
-      #{$last-selector}#{$element}--#{$modifier} {
+      #{$last-selector}#{$element}#{$modifier-separator}#{$modifier} {
         @content;
       }
     }

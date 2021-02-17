@@ -5,7 +5,7 @@
   },
   "name": "sass-easy-bem",
   "description": "BEM made easy for Sass",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "license": "MIT",
   "keywords": [
     "css",
@@ -24,9 +24,9 @@
     "url": "https://github.com/Shudrum/sass-easy-bem.git"
   },
   "devDependencies": {
-    "chai": "^4.2.0",
-    "mocha": "^6.2.0",
-    "node-sass": "^4.12.0"
+    "chai": "^4.3.0",
+    "mocha": "^8.3.0",
+    "node-sass": "^5.0.0"
   },
   "style": "easy-bem.scss",
   "scripts": {
